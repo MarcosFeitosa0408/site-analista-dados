@@ -9,11 +9,13 @@
   
    body {
     body {
-        background: url('fundo-site.png') no-repeat center center fixed;
-        background-size: cover;
-        color: #F0F0F0;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        overflow-x: hidden;
+       background: url('fundo.png') no-repeat center center fixed;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #F0F0F0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       }
       
       }
