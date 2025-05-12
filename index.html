@@ -43,5 +43,35 @@
       <button class="btn-contato" onclick="destacarContato(this)"><a href="https://www.facebook.com/people/Marcos-Feitosa/pfbid0JxmBgbKELHRcbFRG3k4H83ftkZ9JeECaL8qevqWBNAFd9M4MLs9c7zw9cCsQPxbrl/" target="_blank">📘 Facebook</a></button>
     </div>
   </footer>
+  <script>
+    const ctx = document.getElementById('graficoProjetos').getContext('2d');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Marketing', 'Slides', 'Excel', 'Power BI', 'Inteligência Artificial'],
+        datasets: [{
+          label: 'Projetos',
+          data: [5, 8, 12, 7, 9],
+          backgroundColor: ['gold', '#3b82f6', '#3b82f6', 'gold', '#ffd700'],
+          borderRadius: 8
+        }]
+      },
+      options: {
+        scales: {
+          y: { beginAtZero: true }
+        },
+        plugins: {
+          legend: {
+            labels: {
+              color: '#2563eb',
+              font: {
+                weight: 'bold'
+              }
+            }
+          }
+        }
+      }
+    });
+  </script>
 </body>
 </html>
