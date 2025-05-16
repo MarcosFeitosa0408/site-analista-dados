@@ -1,174 +1,172 @@
 /* Estilo moderno com fundo gradiente e elementos vibrantes */
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  
-   body {
-    body {
-       background: url('fundo.png') no-repeat center center fixed;
-  background-size: cover;
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #0e0e0e; /* Cor de fundo geral da página */
   color: #F0F0F0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      }
-      
-      }
-      
-  
-  
-  .hero {
-    height: 100vh;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 2rem;
-  }
-  
-  .overlay {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    top: 0;
-    left: 0;
-    z-index: 0;
-  }
-  
-  .content {
-    position: relative;
-    z-index: 1;
-    max-width: 800px;
-  }
-  
-  .profile-pic {
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
-    border: 4px solid #1ABC9C;
-    animation: pulse 2s infinite;
-    margin-bottom: 1rem;
-  }
-  
+}
+
+/* FUNDO ESPECÍFICO NA SEÇÃO DO PERFIL (.hero) */
+.hero {
+  background-image: url('fundo.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+/* ESCURECE O FUNDO SUTILMENTE */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 0;
+}
+
+/* CONTEÚDO SOBRE O FUNDO */
+.content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+}
+
+.overlay {
+  display: none; /* Desativada pois agora usamos ::before */
+}
+
+.profile-pic {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: 4px solid #1ABC9C;
+  animation: pulse 2s infinite;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 2.8rem;
+  margin-bottom: 0.5rem;
+  color: #FFFFFF;
+}
+
+p {
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+}
+
+.project-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.project-btn {
+  padding: 12px 24px;
+  background-color: #2ECC71;
+  border: none;
+  border-radius: 30px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 0 10px #2ECC71;
+}
+
+.project-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #1ABC9C;
+}
+
+.grafico-aprendizado {
+  padding: 4rem 2rem;
+  background-color: #1c1c1c;
+  text-align: center;
+}
+
+.grafico-aprendizado h2 {
+  color: #FFFFFF;
+  margin-bottom: 2rem;
+}
+
+.barras-container {
+  max-width: 700px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.barra label {
+  display: block;
+  margin-bottom: 0.3rem;
+  text-align: left;
+  font-weight: bold;
+  color: #F0F0F0;
+}
+
+.progresso {
+  height: 20px;
+  background: linear-gradient(90deg, #1ABC9C, #2ECC71);
+  border-radius: 12px;
+  width: 0;
+  transition: width 1.2s ease-in-out;
+}
+
+footer {
+  background-color: #0e0e0e;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.contato .btn-contato {
+  display: inline-block;
+  margin: 10px;
+  padding: 12px 20px;
+  background-color: transparent;
+  color: #F0F0F0;
+  border: 2px solid #1ABC9C;
+  border-radius: 30px;
+  font-weight: bold;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.contato .btn-contato:hover {
+  background-color: #1ABC9C;
+  color: #0e0e0e;
+  box-shadow: 0 0 15px #1ABC9C;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@media (max-width: 768px) {
   h1 {
-    font-size: 2.8rem;
-    margin-bottom: 0.5rem;
-    color: #FFFFFF;
+    font-size: 2rem;
   }
-  
-  p {
-    font-size: 1.2rem;
-    max-width: 600px;
-    margin: 0 auto 2rem;
+  .profile-pic {
+    width: 120px;
+    height: 120px;
   }
-  
   .project-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-  }
-  
-  .project-btn {
-    padding: 12px 24px;
-    background-color: #2ECC71;
-    border: none;
-    border-radius: 30px;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    transition: transform 0.3s, box-shadow 0.3s;
-    box-shadow: 0 0 10px #2ECC71;
-  }
-  
-  .project-btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 20px #1ABC9C;
-  }
-  
-  .grafico-aprendizado {
-    padding: 4rem 2rem;
-    background-color: #1c1c1c;
-    text-align: center;
-  }
-  
-  .grafico-aprendizado h2 {
-    color: #FFFFFF;
-    margin-bottom: 2rem;
-  }
-  
-  .barras-container {
-    max-width: 700px;
-    margin: auto;
-    display: flex;
     flex-direction: column;
-    gap: 1.5rem;
   }
-  
-  .barra label {
-    display: block;
-    margin-bottom: 0.3rem;
-    text-align: left;
-    font-weight: bold;
-    color: #F0F0F0;
-  }
-  
-  .progresso {
-    height: 20px;
-    background: linear-gradient(90deg, #1ABC9C, #2ECC71);
-    border-radius: 12px;
-    width: 0;
-    transition: width 1.2s ease-in-out;
-  }
-  
-  footer {
-    background-color: #0e0e0e;
-    padding: 2rem 1rem;
-    text-align: center;
-  }
-  
-  .contato .btn-contato {
-    display: inline-block;
-    margin: 10px;
-    padding: 12px 20px;
-    background-color: transparent;
-    color: #F0F0F0;
-    border: 2px solid #1ABC9C;
-    border-radius: 30px;
-    font-weight: bold;
-    transition: all 0.3s;
-    cursor: pointer;
-  }
-  
-  .contato .btn-contato:hover {
-    background-color: #1ABC9C;
-    color: #0e0e0e;
-    box-shadow: 0 0 15px #1ABC9C;
-  }
-  
-  @keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
-  }
-  
-  @media (max-width: 768px) {
-    h1 {
-      font-size: 2rem;
-    }
-    .profile-pic {
-      width: 120px;
-      height: 120px;
-    }
-    .project-buttons {
-      flex-direction: column;
-    }
-  }
-  
+}
