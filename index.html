@@ -55,34 +55,64 @@
     </div>
   </footer>
   <script>
-    const ctx = document.getElementById('graficoProjetos').getContext('2d');
-    new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: ['Marketing', 'Slides', 'Excel', 'Power BI', 'Inteligência Artificial'],
-        datasets: [{
-          label: 'Projetos',
-          data: [5, 8, 12, 7, 9],
-          backgroundColor: ['gold', '#3b82f6', '#3b82f6', 'gold', '#ffd700'],
-          borderRadius: 8
-        }]
-      },
-      options: {
-        scales: {
-          y: { beginAtZero: true }
-        },
-        plugins: {
-          legend: {
-            labels: {
-              color: '#2563eb',
-              font: {
-                weight: 'bold'
-              }
-            }
-          }
-        }
-      }
-    });
+    <script>
+  function toggleMenu() {
+    const submenu = document.getElementById("submenu");
+    submenu.style.display = submenu.style.display === "block" ? "none" : "block";
+  }
+
+  // Fecha o menu se clicar fora dele
+  window.addEventListener("click", function (e) {
+    const dropdown = document.querySelector(".dropdown");
+    const submenu = document.getElementById("submenu");
+    if (!dropdown.contains(e.target)) {
+      submenu.style.display = "none";
+    }
+  });
+
+<style>
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .submenu {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
+    padding: 10px;
+    border-radius: 8px;
+    min-width: 220px;
+  }
+
+  .submenu button {
+    background-color: #f9f9f9;
+    color: #333;
+    padding: 10px;
+    border: none;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  .submenu button:hover {
+    background-color: #eee;
+  }
+
+  .project-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+</style>
+  
   </script>
 </body>
 </html>
