@@ -88,16 +88,25 @@
   }
 
   .submenu button {
-    background-color: #f9f9f9;
-    color: #333;
-    padding: 10px;
-    border: none;
-    width: 100%;
-    text-align: left;
-    margin-bottom: 5px;
-    cursor: pointer;
-    border-radius: 5px;
-  }
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 18px;
+  border: none;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 8px;
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+}
+
+.submenu button:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
 
   .submenu button:hover {
     background-color: #eee;
