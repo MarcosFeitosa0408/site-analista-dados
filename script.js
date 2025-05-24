@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
     console.log("Site animado e carregado com sucesso!");
   });
-  function toggleMenu() {
-  const submenu = document.getElementById("submenu");
+  function toggleMenu(id) {
+  const submenu = document.getElementById(id);
   submenu.style.display = submenu.style.display === "block" ? "none" : "block";
 }
