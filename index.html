@@ -18,8 +18,11 @@
     <p>Sou Marcos Feitosa, estudante de Análise de Dados em constante evolução. Apaixonado por transformar dados em insights valiosos, estou sempre em busca de novos conhecimentos e desafios. Neste espaço, compartilho minhas descobertas, projetos e aprendizados na jornada pelo universo dos dados.</p>
   </section>
       <div class="project-buttons">
-        <button class="project-btn">Marketing</button>
-       <div class="dropdown">
+        <button class="project-btn"onclick="toggleMenu('submenuSQL')>SQL</button>
+       <div class="submenu" id="submenuSQL" style="display: none;">
+        <button onclick="window.open('https://1drv.ms/p/c/585f0eae7ffe54ba/ESZGEP7ubCJEmjOP2j9OFjMBTLOyS2F2pjwwt-slARbE7g?e=oHFAbS', '_blank')">Projeto 1 - SQL</button>
+  </div>
+</div>  
   <button class="project-btn" onclick="toggleMenu('submenuSlides')">Slides</button>
   <div class="submenu" id="submenuSlides" style="display: none;">
     <button onclick="window.open('https://gamma.app/docs/Framework--shdf1hwqr1xcwid?mode=doc', '_blank')">Projeto 1 - Slides - Gama</button>
@@ -28,7 +31,7 @@
 </div>
 
 <div class="dropdown">
-  <button class="project-btn" onclick="toggleMenu('submenuExcel')">Projetos Excel</button>
+  <button class="project-btn" onclick="toggleMenu('submenuExcel')"> Excel</button>
   <div class="submenu" id="submenuExcel" style="display: none;">
     <button onclick="window.open('https://sites.google.com/view/portflio-marcosfeitosa/in%C3%ADcio', '_blank')">Projeto 1 - Dashboard</button>
     <button onclick="window.open('https://www.linkedin.com/posts/marcos-feitosa-472197193_tenho-prazer-de-compartilhar-este-projeto-activity-7329323811202338816-lIjJ', '_blank')">Projeto 2 - Saúde</button>
@@ -38,16 +41,16 @@
 
   </div>
 </div>
-
+    
+      <div class="dropdown">
         <button class="project-btn">Power BI</button>
-     <div class="dropdown">
-  <button class="project-btn" onclick="toggleMenu('submenuIA')">Inteligência Artificial</button>
+    <button class="project-btn" onclick="toggleMenu('submenuIA')"> Inteligência Artificial</button>
   <div class="submenu" id="submenuIA" style="display: none;">
     <button onclick="window.open('https://www.linkedin.com/in/marcosfeitosa-analista/overlay/1713827977371/single-media-viewer/?profileId=ACoAAC1pRtYBGRhA76xgFa64zAG_G1L5RgnOI0g', '_blank')">Projeto 1- Extensão em IA</button>
     
-  
   </div>
 </div>
+    
 
   </header>
 
@@ -139,6 +142,7 @@
 </style>
 </body>
 </html>
+
 
 
 
