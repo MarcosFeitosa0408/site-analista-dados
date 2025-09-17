@@ -2,55 +2,90 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Marcos Feitosa | Especialista em Dados</title>
 <style>
-:root { --green: #4CAF50; --green-2:#1ABC9C; --bg:#f7f8fb; --card:#fff; }
+:root{ --green:#4CAF50; --green2:#1ABC9C; --bg:#f7f8fb; --card:#fff; --text:#222; }
 *{box-sizing:border-box}
-body{margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background:var(--bg); color:#222; -webkit-font-smoothing:antialiased}
+body{margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial; background:var(--bg); color:var(--text); -webkit-font-smoothing:antialiased}
+
+/* HERO */
 .hero{
   position:relative;
   min-height:420px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:linear-gradient(135deg, rgba(76,175,80,0.08), rgba(26,188,156,0.04));
+  display:flex; align-items:center; justify-content:center;
+  background:linear-gradient(135deg, rgba(76,175,80,0.06), rgba(26,188,156,0.02));
 }
-.hero .overlay{position:absolute;inset:0;background:url('hero-bg.jpg') center/cover no-repeat;opacity:0.08}
-.content{position:relative;z-index:2; text-align:center; max-width:900px; padding:48px 20px;}
-.profile-pic{width:120px;height:120px;border-radius:50%;object-fit:cover;display:block;margin:0 auto 12px;box-shadow:0 6px 20px rgba(0,0,0,0.12)}
-h1{margin:6px 0 10px;font-size:28px;letter-spacing:0.4px}
+.hero .overlay{position:absolute; inset:0; background:url('hero-bg.jpg') center/cover no-repeat; opacity:0.08; pointer-events:none}
+.content{position:relative;z-index:2; text-align:center; max-width:900px; padding:48px 20px}
+.profile-pic{width:120px;height:120px;border-radius:50%;object-fit:cover;margin:0 auto 12px;box-shadow:0 6px 20px rgba(0,0,0,0.12)}
+h1{margin:6px 0 10px;font-size:28px}
 .sobre{background:rgba(255,255,255,0.75); padding:18px;border-radius:12px; margin:12px auto; max-width:760px; text-align:left; box-shadow:0 4px 12px rgba(0,0,0,0.06)}
 .sobre h3{margin:0 0 8px;font-size:18px}
 .sobre p{margin:0;font-size:15px;line-height:1.5;color:#333}
 
-/* Buttons */
+/* BOTOES */
 .botoes-container{display:flex; flex-wrap:wrap; justify-content:center; gap:12px; margin-top:18px}
 .project-btn{background:var(--green); color:#fff; padding:10px 18px; border:none; border-radius:30px; cursor:pointer; font-weight:700; font-size:15px; box-shadow:0 6px 16px rgba(46,204,113,0.12); transition:transform .12s, background .12s}
-.project-btn:hover{transform:translateY(-2px); background:var(--green-2)}
-
-.dropdown{position:relative;}
-
-/* submenu */
+.project-btn:hover{transform:translateY(-2px); background:var(--green2)}
+.dropdown{position:relative}
 .submenu{display:none; position:absolute; top:calc(100% + 10px); left:50%; transform:translateX(-50%); background:var(--card); padding:12px; border-radius:12px; box-shadow:0 12px 30px rgba(8,8,8,0.12); min-width:240px; z-index:1000}
 .submenu.open{display:block}
-.submenu button{display:block; width:100%; margin-bottom:8px; padding:10px; border-radius:20px; border:none; background:var(--green); color:#fff; font-weight:600; cursor:pointer; box-shadow:0 6px 12px rgba(46,204,113,0.08); transition:transform .12s}
+.submenu button{display:block; width:100%; margin-bottom:8px; padding:10px; border-radius:20px; border:none; background:var(--green); color:#fff; font-weight:600; cursor:pointer}
 .submenu button:last-child{margin-bottom:0}
-.submenu button:hover{transform:scale(1.02); background:var(--green-2)}
 
-/* progress bars */
-.grafico-aprendizado{padding:30px 20px; max-width:980px; margin:24px auto; background:var(--card); border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,0.06)}
-.barras-container{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px}
-.barra{background:#f1f5f6; padding:10px; border-radius:8px}
-.barra label{display:block;margin-bottom:8px;font-weight:600}
-.progresso{height:12px;background:linear-gradient(90deg,var(--green),var(--green-2)); width:0;border-radius:8px; transition:width .8s ease}
+/* GRAFICO - com "janela" e mesmo plano de fundo do header */
+.grafico-aprendizado{padding:18px 12px; max-width:980px; margin:24px auto}
+.grafico-window{
+  position:relative;
+  border-radius:12px;
+  overflow:hidden;
+  background:rgba(255,255,255,0.85);
+  box-shadow:0 8px 26px rgba(0,0,0,0.07);
+  padding:16px;
+}
+
+/* Uso da mesma imagem do header como camada sutil dentro da "janela" */
+.grafico-window::before{
+  content:"";
+  position:absolute; inset:0;
+  background: url('hero-bg.jpg') center/cover no-repeat;
+  opacity:0.06; pointer-events:none;
+  z-index:0;
+}
+
+/* "barra de título" estilo janela (bolinhas) */
+.window-header{display:flex; gap:8px; align-items:center; padding:8px 6px 12px; z-index:1; position:relative}
+.window-dot{width:11px;height:11px;border-radius:50%}
+.window-dot.red{background:#ff5f56}
+.window-dot.yellow{background:#ffbd2e}
+.window-dot.green{background:#27c93f}
+
+/* container dos bars (2D, ordenadas via JS) */
+.barras-container{display:flex; flex-direction:column; gap:12px; z-index:1; position:relative}
+.barra{background:#f1f5f6; padding:10px; border-radius:10px; display:flex; flex-direction:column; gap:8px; min-height:48px}
+
+/* label row with name on left and percent on right */
+.label-row{display:flex; justify-content:space-between; align-items:center; font-weight:700; font-size:14px; color:#333}
+.label-text{max-width:70%}
+.label-percent{font-size:13px; opacity:0.9}
+
+/* a barra 2D em si */
+.progresso{
+  height:18px;
+  width:0;
+  border-radius:8px;
+  background:linear-gradient(90deg,var(--green),var(--green2));
+  transition:width .8s ease;
+  box-shadow: inset 0 -3px 8px rgba(0,0,0,0.08);
+}
 
 /* footer */
 footer{padding:24px 12px; text-align:center}
 .contato{display:flex; flex-wrap:wrap; gap:10px; justify-content:center}
 .btn-contato{display:inline-block; padding:10px 14px; border-radius:10px; text-decoration:none; background:white; box-shadow:0 6px 16px rgba(0,0,0,0.06); color:#111; font-weight:600}
 
-/* responsive */
+/* responsivo */
 @media (max-width:520px){
   .profile-pic{width:96px;height:96px}
   h1{font-size:22px}
@@ -64,43 +99,38 @@ footer{padding:24px 12px; text-align:center}
   <div class="content" role="banner">
     <img src="Postar_Perfil.png" alt="Marcos Feitosa" class="profile-pic">
     <h1>Marcos Feitosa — Especialista em Dados</h1>
-    <section id="sobre" class="sobre" aria-labelledby="sobre-title">
-      <h3 id="sobre-title">Sobre Mim</h3>
+
+    <section id="sobre" class="sobre">
+      <h3>Sobre Mim</h3>
       <p>Sou Marcos Feitosa, estudante de Análise de Dados em constante evolução. Apaixonado por transformar dados em insights valiosos, estou sempre em busca de novos conhecimentos e desafios. Neste espaço, compartilho minhas descobertas, projetos e aprendizados na jornada pelo universo dos dados.</p>
     </section>
 
-    <!-- botões centralizados -->
     <div class="botoes-container" aria-label="Projetos e recursos">
       <div class="dropdown">
-        <button class="project-btn" data-toggle="submenuSQL" aria-expanded="false" aria-controls="submenuSQL">SQL</button>
-        <div class="submenu" id="submenuSQL" role="menu" aria-hidden="true">
-          <button role="menuitem" onclick="window.open('https://1drv.ms/p/c/585f0eae7ffe54ba/ESZGEP7ubCJEmjOP2j9OFjMBTLOyS2F2pjwwt-slARbE7g?e=oHFAbS','_blank')">Projeto 1 - SQL</button>
+        <button class="project-btn" data-toggle="submenuSQL" aria-expanded="false">SQL</button>
+        <div class="submenu" id="submenuSQL"><button onclick="window.open('https://1drv.ms/p/c/585f0eae7ffe54ba/ESZGEP7ubCJEmjOP2j9OFjMBTLOyS2F2pjwwt-slARbE7g?e=oHFAbS','_blank')">Projeto 1 - SQL</button></div>
+      </div>
+
+      <div class="dropdown">
+        <button class="project-btn" data-toggle="submenuSlides" aria-expanded="false">Slides</button>
+        <div class="submenu" id="submenuSlides">
+          <button onclick="window.open('https://gamma.app/docs/Framework--shdf1hwqr1xcwid?mode=doc','_blank')">Projeto 1 - Slides - Gamma</button>
+          <button onclick="window.open('https://gamma.app/docs/Marcos-Feitosa-Analista-de-Dados-Apresenta-Excel-para-Dominar-as--89fesv1ychpc6nh?mode=doc','_blank')">Projeto 2 - Slides - Gamma</button>
         </div>
       </div>
 
       <div class="dropdown">
-        <button class="project-btn" data-toggle="submenuSlides" aria-expanded="false" aria-controls="submenuSlides">Slides</button>
-        <div class="submenu" id="submenuSlides" role="menu" aria-hidden="true">
-          <button role="menuitem" onclick="window.open('https://gamma.app/docs/Framework--shdf1hwqr1xcwid?mode=doc','_blank')">Projeto 1 - Slides - Gamma</button>
-          <button role="menuitem" onclick="window.open('https://gamma.app/docs/Marcos-Feitosa-Analista-de-Dados-Apresenta-Excel-para-Dominar-as--89fesv1ychpc6nh?mode=doc','_blank')">Projeto 2 - Slides - Gamma</button>
+        <button class="project-btn" data-toggle="submenuExcel" aria-expanded="false">Excel</button>
+        <div class="submenu" id="submenuExcel">
+          <button onclick="window.open('https://sites.google.com/view/portflio-marcosfeitosa/in%C3%ADcio','_blank')">Projeto 1 - Dashboard</button>
+          <button onclick="window.open('https://www.linkedin.com/posts/marcos-feitosa-472197193_tenho-prazer-de-compartilhar-este-projeto-activity-7329323811202338816-lIjJ','_blank')">Projeto 2 - Saúde</button>
         </div>
       </div>
 
       <div class="dropdown">
-        <button class="project-btn" data-toggle="submenuExcel" aria-expanded="false" aria-controls="submenuExcel">Excel</button>
-        <div class="submenu" id="submenuExcel" role="menu" aria-hidden="true">
-          <button role="menuitem" onclick="window.open('https://sites.google.com/view/portflio-marcosfeitosa/in%C3%ADcio','_blank')">Projeto 1 - Dashboard</button>
-          <button role="menuitem" onclick="window.open('https://www.linkedin.com/posts/marcos-feitosa-472197193_tenho-prazer-de-compartilhar-este-projeto-activity-7329323811202338816-lIjJ','_blank')">Projeto 2 - Saúde</button>
-          <button role="menuitem" onclick="window.open('https://github.com/MarcosFeitosa0408/Analise-Turnover','_blank')">Projeto 3 - Turnover</button>
-          <button role="menuitem" onclick="window.open('https://youtu.be/slFW9VhloVY','_blank')">Projeto 4 - Funções Excel</button>
-          <button role="menuitem" onclick="window.open('https://github.com/MarcosFeitosa0408/analise-meteorologica-excel','_blank')">Projeto 5 - Análise Meteorológica</button>
-        </div>
-      </div>
-
-      <div class="dropdown">
-        <button class="project-btn" data-toggle="submenuIA" aria-expanded="false" aria-controls="submenuIA">Inteligência Artificial</button>
-        <div class="submenu" id="submenuIA" role="menu" aria-hidden="true">
-          <button role="menuitem" onclick="window.open('https://www.linkedin.com/in/marcosfeitosa-analista/overlay/1713827977371/single-media-viewer/?profileId=ACoAAC1pRtYBGRhA76xgFa64zAG_G1L5RgnOI0g','_blank')">Projeto 1 - Extensão IA</button>
+        <button class="project-btn" data-toggle="submenuIA" aria-expanded="false">Inteligência Artificial</button>
+        <div class="submenu" id="submenuIA">
+          <button onclick="window.open('https://www.linkedin.com/in/marcosfeitosa-analista/overlay/1713827977371/single-media-viewer/?profileId=ACoAAC1pRtYBGRhA76xgFa64zAG_G1L5RgnOI0g','_blank')">Projeto 1 - Extensão IA</button>
         </div>
       </div>
     </div>
@@ -108,14 +138,41 @@ footer{padding:24px 12px; text-align:center}
   </div>
 </header>
 
+<!-- GRAFICO: usa mesmo plano de fundo e janela -->
 <section class="grafico-aprendizado" aria-labelledby="evolucao-title">
-  <h2 id="evolucao-title">Minha Evolução</h2>
-  <div class="barras-container">
-    <div class="barra"><label>Marketing</label><div class="progresso" data-width="80%"></div></div>
-    <div class="barra"><label>Slides</label><div class="progresso" data-width="75%"></div></div>
-    <div class="barra"><label>Excel</label><div class="progresso" data-width="90%"></div></div>
-    <div class="barra"><label>Power BI</label><div class="progresso" data-width="85%"></div></div>
-    <div class="barra"><label>IA</label><div class="progresso" data-width="60%"></div></div>
+  <div class="grafico-window" role="region" aria-labelledby="evolucao-title">
+    <div class="window-header" aria-hidden="true">
+      <span class="window-dot red"></span>
+      <span class="window-dot yellow"></span>
+      <span class="window-dot green"></span>
+    </div>
+
+    <h2 id="evolucao-title" style="margin:0 0 10px">Minha Evolução</h2>
+
+    <!-- barras-container: conteúdo será ordenado pelo JS (do maior para o menor) -->
+    <div class="barras-container" id="barras">
+      <!-- Removi a barra "Marketing" conforme pedido -->
+      <!-- Cada .barra tem data-label e data-width (porcentagem) -->
+      <div class="barra" data-label="Excel" data-width="90%">
+        <div class="label-row"><span class="label-text">Excel</span><span class="label-percent">90%</span></div>
+        <div class="progresso"></div>
+      </div>
+
+      <div class="barra" data-label="Power BI" data-width="85%">
+        <div class="label-row"><span class="label-text">Power BI</span><span class="label-percent">85%</span></div>
+        <div class="progresso"></div>
+      </div>
+
+      <div class="barra" data-label="Slides" data-width="75%">
+        <div class="label-row"><span class="label-text">Slides</span><span class="label-percent">75%</span></div>
+        <div class="progresso"></div>
+      </div>
+
+      <div class="barra" data-label="IA" data-width="60%">
+        <div class="label-row"><span class="label-text">IA</span><span class="label-percent">60%</span></div>
+        <div class="progresso"></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -126,58 +183,86 @@ footer{padding:24px 12px; text-align:center}
     <a class="btn-contato" href="mailto:marcosfeitosa.analista@gmail.com">📧 marcosfeitosa.analista@gmail.com</a>
     <a class="btn-contato" href="https://www.linkedin.com/in/marcos-feitosa-472197193/" target="_blank" rel="noopener">🔗 LinkedIn</a>
     <a class="btn-contato" href="https://github.com/MarcosFeitosa0408/site-analista-dados/blob/main/CRV_Marcos.pdf" target="_blank" rel="noopener">📄 Currículo</a>
-    <a class="btn-contato" href="https://www.facebook.com/profile.php?id=61575199814242" target="_blank" rel="noopener">📘 Facebook</a>
   </div>
 </footer>
 
 <script>
 (function(){
-  function toggleMenu(id){
-    const el = document.getElementById(id);
-    if(!el) return;
-    const isOpen = el.classList.contains('open');
-    closeAllSubmenus();
-    if(!isOpen){
-      el.classList.add('open');
-      el.setAttribute('aria-hidden','false');
-      const btn = document.querySelector('[data-toggle="'+id+'"]');
-      if(btn) btn.setAttribute('aria-expanded','true');
-    }
-  }
+  /* ------- dropdowns (mantive e melhorei) ------- */
   function closeAllSubmenus(){
-    document.querySelectorAll('.submenu.open').forEach(s => {
-      s.classList.remove('open');
-      s.setAttribute('aria-hidden','true');
-    });
+    document.querySelectorAll('.submenu.open').forEach(s => s.classList.remove('open'));
     document.querySelectorAll('[data-toggle]').forEach(b => b.setAttribute('aria-expanded','false'));
   }
-
   document.querySelectorAll('[data-toggle]').forEach(btn=>{
     btn.addEventListener('click', function(e){
       e.stopPropagation();
       const id = this.getAttribute('data-toggle');
-      toggleMenu(id);
+      const menu = document.getElementById(id);
+      if(!menu) return;
+      const willOpen = !menu.classList.contains('open');
+      closeAllSubmenus();
+      if(willOpen){ menu.classList.add('open'); this.setAttribute('aria-expanded','true'); }
     });
   });
-
   document.addEventListener('click', function(e){
     if(!e.target.closest('.dropdown')) closeAllSubmenus();
   });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeAllSubmenus(); });
 
-  document.addEventListener('keydown', function(e){
-    if(e.key === 'Escape') closeAllSubmenus();
-  });
+  /* ------- gráfico: remove Marketing (já não está no HTML), ordena do maior para o menor e anima ------- */
+  const barrasContainer = document.getElementById('barras');
+  function sortBarrasDesc(){
+    const barras = Array.from(barrasContainer.querySelectorAll('.barra'));
+    // filtra qualquer barra com label "marketing" só por segurança (caso volte a aparecer)
+    const filtered = barras.filter(b => {
+      const lbl = (b.dataset.label || '').trim().toLowerCase();
+      return lbl !== 'marketing';
+    });
+    filtered.sort((a,b)=> {
+      const aw = parseInt(a.dataset.width) || 0;
+      const bw = parseInt(b.dataset.width) || 0;
+      return bw - aw; // decrescente
+    });
+    // reconstrói container com nova ordem
+    barrasContainer.innerHTML = '';
+    filtered.forEach(b => barrasContainer.appendChild(b));
+  }
 
-  document.querySelectorAll('.progresso').forEach(el=>{
-    const w = el.dataset.width || '0%';
-    setTimeout(()=> el.style.width = w, 120);
-  });
+  // aplica porcentagens visuais (animação) e atualiza o texto da percent
+  function animateBarras(){
+    document.querySelectorAll('.barra').forEach(bar=>{
+      const progresso = bar.querySelector('.progresso');
+      const pctText = bar.querySelector('.label-percent');
+      const raw = (bar.dataset.width || '0%').toString().trim();
+      const pct = parseInt(raw) || 0;
+      if(pctText) pctText.textContent = `${pct}%`;
+      // delay por barra para dar efeito de cascata
+      setTimeout(()=> { progresso.style.width = pct + '%'; }, 100);
+    });
+  }
 
-  window.toggleMenu = toggleMenu;
+  // roda ordenação e animação
+  sortBarrasDesc();
+  // aguarda um tick para garantir reflow antes da animação
+  setTimeout(animateBarras, 140);
+
+  // exporta função para uso manual se quiser abrir um submenu via console
+  window.toggleMenu = function(id){
+    const el = document.getElementById(id);
+    if(!el) return;
+    const btn = document.querySelector('[data-toggle="'+id+'"]');
+    const willOpen = !el.classList.contains('open');
+    closeAllSubmenus();
+    if(willOpen){
+      el.classList.add('open');
+      if(btn) btn.setAttribute('aria-expanded','true');
+    }
+  };
 })();
 </script>
 </body>
 </html>
+
 
 
 
