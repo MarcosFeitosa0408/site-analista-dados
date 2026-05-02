@@ -202,3 +202,20 @@ footer {
   transform: scale(1.05);
   box-shadow: 0 0 20px #1ABC9C;
 }
+/* ===== CASE REAL ===== */
+
+.case-real {
+  padding: 40px;
+}
+
+.case-box {
+  background: #111;
+  padding: 20px;
+  border-radius: 12px;
+  margin-top: 15px;
+  line-height: 1.6;
+}
+
+.case-box h3 {
+  color: #2ECC71;
+}
